@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-const ExamTimer = ({ duration }) => {
+interface ExamTimerProps {
+    duration: number;
+}
+
+const ExamTimer: React.FC<ExamTimerProps> = ({ duration }) => {
     const [timeLeft, setTimeLeft] = useState(duration);
 
     useEffect(() => {
@@ -12,7 +16,7 @@ const ExamTimer = ({ duration }) => {
         }
     }, [timeLeft]);
 
-    const formatTime = (seconds) => {
+    const formatTime = (seconds: number) => {
         const minutes = Math.floor(seconds / 60);
         const remainingSeconds = seconds % 60;
         return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
