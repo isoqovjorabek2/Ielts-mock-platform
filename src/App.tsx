@@ -1,7 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
-import { useAuth } from './hooks/useAuth'
-import { LoadingSpinner } from './components/UI/LoadingSpinner'
 import './lib/i18n'
 
 // Pages
@@ -15,18 +12,6 @@ import { Register } from './pages/Auth/Register'
 import { Profile } from './pages/Profile'
 
 function App() {
-  const { ready } = useTranslation()
-  const { loading: authLoading } = useAuth()
-
-  // Show loading if i18n is not ready or auth is still loading
-  if (!ready || authLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <LoadingSpinner size="lg" />
-      </div>
-    )
-  }
-
   return (
     <Router>
       <Routes>
