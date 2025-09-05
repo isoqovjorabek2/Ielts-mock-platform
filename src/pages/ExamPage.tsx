@@ -10,15 +10,13 @@ const sampleQuestions = {
       type: 'multiple-choice' as const,
       question: 'What is the main topic of the conversation?',
       options: ['Travel plans', 'Work schedule', 'Weather forecast', 'Restaurant booking'],
-      correctAnswer: 'Travel plans',
-      audio: '/audio/sample1.mp3'
+      correctAnswer: 'Travel plans'
     },
     {
       id: '2',
       type: 'fill-blank' as const,
       question: 'The meeting is scheduled for _______ o\'clock.',
-      correctAnswer: 'three',
-      audio: '/audio/sample2.mp3'
+      correctAnswer: 'three'
     }
   ],
   reading: [

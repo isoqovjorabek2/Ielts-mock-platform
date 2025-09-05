@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Clock } from 'lucide-react'
 import { formatTime } from '../../lib/utils'
 
@@ -11,14 +11,16 @@ interface TimerProps {
 export function Timer({ timeLeft, isRunning, className = '' }: TimerProps) {
   const isLowTime = timeLeft <= 300 // 5 minutes
   const isCriticalTime = timeLeft <= 60 // 1 minute
+  const [isPulsing, setIsPulsing] = useState(false)
 
   useEffect(() => {
     if (isCriticalTime && timeLeft > 0) {
-      // Flash effect for critical time
       const interval = setInterval(() => {
-        document.querySelector('.timer-critical')?.classList.toggle('animate-pulse')
+        setIsPulsing(prev => !prev)
       }, 500)
       return () => clearInterval(interval)
+    } else {
+      setIsPulsing(false)
     }
   }, [isCriticalTime, timeLeft])
 
@@ -27,7 +29,8 @@ export function Timer({ timeLeft, isRunning, className = '' }: TimerProps) {
       className={`
         timer-display flex items-center space-x-2
         ${isLowTime ? 'bg-warning-50 border-warning-200 text-warning-800' : ''}
-        ${isCriticalTime ? 'bg-error-50 border-error-200 text-error-800 timer-critical' : ''}
+        ${isCriticalTime ? 'bg-error-50 border-error-200 text-error-800' : ''}
+        ${isCriticalTime && isPulsing ? 'animate-pulse' : ''}
         ${className}
       `}
     >
