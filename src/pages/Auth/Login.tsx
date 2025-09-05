@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate, Navigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Eye, EyeOff, Mail, Lock } from 'lucide-react'
+import { Eye, EyeOff, Mail, Lock, AlertTriangle } from 'lucide-react'
 import { Layout } from '../../components/Layout/Layout'
 import { useAuth } from '../../hooks/useAuth'
 import { LoadingSpinner } from '../../components/UI/LoadingSpinner'
@@ -17,6 +17,7 @@ export function Login() {
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [isEmailNotConfirmed, setIsEmailNotConfirmed] = useState(false)
 
   if (user) {
     return <Navigate to="/dashboard" replace />
@@ -26,6 +27,7 @@ export function Login() {
     e.preventDefault()
     setLoading(true)
     setError('')
+    setIsEmailNotConfirmed(false)
 
     try {
       const { error } = await signIn(formData.email, formData.password)
@@ -35,6 +37,7 @@ export function Login() {
         if (error.message === 'Invalid login credentials') {
           setError('Invalid email or password. Please double-check your credentials and try again.')
         } else if (error.message === 'Email not confirmed') {
+          setIsEmailNotConfirmed(true)
           setError('Please check your email inbox (including spam/junk folders) for the confirmation link and click it to verify your account before logging in.')
         } else {
           setError(error.message)
@@ -79,8 +82,30 @@ export function Login() {
 
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             {error && (
-              <div className="bg-error-50 border border-error-200 text-error-700 px-4 py-3 rounded-lg">
-                {error}
+              <div className={`px-4 py-3 rounded-lg border ${
+                isEmailNotConfirmed 
+                  ? 'bg-amber-50 border-amber-200 text-amber-800' 
+                  : 'bg-error-50 border-error-200 text-error-700'
+              }`}>
+                <div className="flex items-start">
+                  {isEmailNotConfirmed && (
+                    <AlertTriangle className="h-5 w-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
+                  )}
+                  <div className="flex-1">
+                    {error}
+                    {isEmailNotConfirmed && (
+                      <div className="mt-2 text-sm">
+                        <strong>Next steps:</strong>
+                        <ol className="list-decimal list-inside mt-1 space-y-1">
+                          <li>Check your email inbox and spam/junk folders</li>
+                          <li>Look for an email from Supabase with the subject "Confirm your signup"</li>
+                          <li>Click the confirmation link in that email</li>
+                          <li>Return here and try logging in again</li>
+                        </ol>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             )}
 
