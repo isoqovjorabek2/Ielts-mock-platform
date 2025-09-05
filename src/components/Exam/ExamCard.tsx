@@ -89,31 +89,3 @@ export function ExamCard({ type, duration, questions, onStart, disabled = false 
     </div>
   )
 }
-          </div>
-        </div>
-      </div>
-
-      <h3 className="text-xl font-semibold text-gray-900 mb-2 capitalize">
-        {t(type)}
-      </h3>
-
-      <p className="text-gray-600 mb-4">
-        {questions} questions • {duration} minutes
-      </p>
-
-      <button
-        onClick={onStart}
-        disabled={disabled}
-        className={`w-full ${disabled ? 'btn-secondary opacity-50 cursor-not-allowed' : 'btn-primary'}`}
-      >
-        {t('start')} {t(type)}
-      </button>
-
-      {disabled && (
-        <p className="text-sm text-error-600 mt-2 text-center">
-          {t('upgradeToAccess')}
-        </p>
-      )}
-    </div>
-  )
-}
