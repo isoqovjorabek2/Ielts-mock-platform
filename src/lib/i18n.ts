@@ -69,6 +69,7 @@ const resources = {
       
       // Payment
       choosePlan: 'Choose Your Plan',
+      bookExam: 'Book Exam',
       freeTrialEnded: 'Your free trial has ended',
       upgradeToAccess: 'Upgrade to access unlimited mock exams',
       
@@ -146,6 +147,7 @@ const resources = {
       
       // Payment
       choosePlan: 'Rejangizni tanlang',
+      bookExam: 'Imtihon buyurtma qilish',
       freeTrialEnded: 'Bepul sinov muddati tugadi',
       upgradeToAccess: 'Cheksiz sinov imtihonlariga kirish uchun yangilang',
       

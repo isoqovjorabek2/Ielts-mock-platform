@@ -48,6 +48,12 @@ export function Header() {
             >
               {t('exams')}
             </Link>
+            <Link
+              to="/booking"
+              className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+            >
+              Book Exam
+            </Link>
             {user && (
               <Link
                 to="/dashboard"
@@ -146,6 +152,13 @@ export function Header() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t('exams')}
+              </Link>
+              <Link
+                to="/booking"
+                className="text-gray-700 hover:text-primary-600 font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Book Exam
               </Link>
               {user && (
                 <Link

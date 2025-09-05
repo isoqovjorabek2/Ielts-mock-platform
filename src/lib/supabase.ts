@@ -72,6 +72,35 @@ export type Database = {
           answers?: Record<string, any>
         }
       }
+      prices: {
+        Row: {
+          id: string
+          exam_type: string
+          price_cents: number
+          currency: string
+          is_active: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          exam_type: string
+          price_cents: number
+          currency?: string
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          exam_type?: string
+          price_cents?: number
+          currency?: string
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+      }
     }
   }
 }
