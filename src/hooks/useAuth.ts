@@ -6,10 +6,11 @@ export interface UserProfile {
   id: string
   email: string
   full_name: string | null
-  locale: string | null
-  role: string | null
+  preferred_language: string | null
+  free_tests_used: number
+  subscription_status: string | null
   created_at: string | null
-  last_login_at: string | null
+  updated_at: string | null
 }
 
 export function useAuth() {
@@ -47,20 +48,51 @@ export function useAuth() {
   const fetchProfile = async (userId: string) => {
     try {
       const { data, error } = await supabase
-        .from('users')
+        .from('profiles')
         .select('*')
         .eq('id', userId)
         .single()
 
       if (error) {
-        throw error
+        if (error.code === 'PGRST116') {
+          // Profile doesn't exist, this is normal for new users
+          console.log('Profile not found for user:', userId)
+          setProfile(null)
+        } else {
+          throw error
+        }
       } else {
         setProfile(data)
       }
     } catch (error) {
       console.error('Error fetching profile:', error)
+      setProfile(null)
     } finally {
       setLoading(false)
+    }
+  }
+
+  const createProfile = async (userId: string, email: string, fullName?: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .insert({
+          id: userId,
+          email: email,
+          full_name: fullName || null,
+          preferred_language: 'en',
+          free_tests_used: 0,
+          subscription_status: 'free'
+        })
+        .select()
+        .single()
+
+      if (error) throw error
+      setProfile(data)
+      return { data, error: null }
+    } catch (error) {
+      console.error('Error creating profile:', error)
+      return { data: null, error }
     }
   }
 
@@ -73,16 +105,38 @@ export function useAuth() {
   }
 
   const signUp = async (email: string, password: string, fullName: string) => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          full_name: fullName
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: fullName
+          }
         }
+      })
+
+      if (error) {
+        return { data, error }
       }
-    })
-    return { data, error }
+
+      // If user was created successfully, create their profile
+      if (data.user && !data.user.email_confirmed_at) {
+        // For users who need email confirmation, we'll create the profile
+        // when they confirm their email and sign in
+        return { data, error: null }
+      }
+
+      // If user is immediately confirmed, create profile now
+      if (data.user) {
+        await createProfile(data.user.id, email, fullName)
+      }
+
+      return { data, error: null }
+    } catch (err) {
+      console.error('Signup error:', err)
+      return { data: null, error: err as any }
+    }
   }
 
   const signOut = async () => {
@@ -93,8 +147,16 @@ export function useAuth() {
   const updateProfile = async (updates: Partial<UserProfile>) => {
     if (!user) return { error: new Error('No user logged in') }
 
+    // If no profile exists, create one first
+    if (!profile) {
+      const createResult = await createProfile(user.id, user.email!, user.user_metadata?.full_name)
+      if (createResult.error) {
+        return createResult
+      }
+    }
+
     const { data, error } = await supabase
-      .from('users')
+      .from('profiles')
       .update(updates)
       .eq('id', user.id)
       .select()
@@ -108,14 +170,15 @@ export function useAuth() {
   }
 
   const canTakeTest = () => {
-    if (!profile) return false
-    return profile.role === 'premium' || true // Allow all tests for now
+    if (!profile) return true // Allow test if profile is loading
+    return profile.subscription_status === 'premium' || profile.free_tests_used < 1
   }
 
   const incrementFreeTestUsage = async () => {
-    if (!profile || profile.role === 'premium') return
+    if (!profile || profile.subscription_status === 'premium') return
 
-    // Update logic can be added here if needed
+    const newUsage = profile.free_tests_used + 1
+    await updateProfile({ free_tests_used: newUsage })
   }
 
   return {

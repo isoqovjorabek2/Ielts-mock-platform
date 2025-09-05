@@ -138,7 +138,7 @@ export function Dashboard() {
               <TrendingUp className="w-6 h-6 text-purple-600" />
             </div>
             <div className="text-2xl font-bold text-gray-900 mb-1">
-              {profile?.role === 'premium' ? 'Premium' : 'Student'}
+              {profile?.subscription_status === 'premium' ? 'Premium' : 'Free'}
             </div>
             <div className="text-sm text-gray-600">Account Status</div>
           </div>
@@ -234,7 +234,7 @@ export function Dashboard() {
                 <Link to="/profile" className="block w-full btn-outline text-center">
                   Edit Profile
                 </Link>
-                {profile?.role !== 'premium' && (
+                {profile?.subscription_status !== 'premium' && (
                   <button className="w-full btn-secondary">
                     {t('upgradeAccount')}
                   </button>
