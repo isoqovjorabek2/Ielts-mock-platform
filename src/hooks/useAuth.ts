@@ -16,7 +16,7 @@ export interface UserProfile {
 export function useAuth() {
   const [user, setUser] = useState<User | null>(null)
   const [profile, setProfile] = useState<UserProfile | null>(null)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     // Get initial session
@@ -24,17 +24,20 @@ export function useAuth() {
       setUser(session?.user ?? null)
       if (session?.user) {
         fetchProfile(session.user.id)
+      } else {
+        setLoading(false)
       }
     })
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
+      async (_, session) => {
         setUser(session?.user ?? null)
         if (session?.user) {
           fetchProfile(session.user.id)
         } else {
           setProfile(null)
+          setLoading(false)
         }
       }
     )
@@ -45,6 +48,7 @@ export function useAuth() {
   }, [])
 
   const fetchProfile = async (userId: string) => {
+    setLoading(true)
     try {
       const { data, error } = await supabase
         .from('profiles')
@@ -60,6 +64,8 @@ export function useAuth() {
     } catch (error) {
       console.error('Error fetching profile:', error)
       setProfile(null)
+    } finally {
+      setLoading(false)
     }
   }
 

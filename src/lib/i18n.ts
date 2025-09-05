@@ -184,7 +184,7 @@ const resources = {
       
       // Payment
       choosePlan: 'Rejangizni tanlang',
-      bookExam: 'Imtihon buyurtma qilish',
+      bookExamPayment: 'Imtihon buyurtma qilish',
       freeTrialEnded: 'Bepul sinov muddati tugadi',
       upgradeToAccess: 'Cheksiz sinov imtihonlariga kirish uchun yangilang',
       
