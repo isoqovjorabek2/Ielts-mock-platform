@@ -31,7 +31,14 @@ export function Login() {
       const { error } = await signIn(formData.email, formData.password)
       
       if (error) {
-        setError(error.message)
+        // Handle specific Supabase error messages
+        if (error.message === 'Invalid login credentials') {
+          setError('Invalid email or password. Please double-check your credentials and try again.')
+        } else if (error.message === 'Email not confirmed') {
+          setError('Please check your email inbox (including spam/junk folders) for the confirmation link and click it to verify your account before logging in.')
+        } else {
+          setError(error.message)
+        }
       } else {
         navigate('/dashboard')
       }
