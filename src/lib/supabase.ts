@@ -8,36 +8,33 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 export type Database = {
   public: {
     Tables: {
-      profiles: {
+      users: {
         Row: {
           id: string
           email: string
           full_name: string | null
-          preferred_language: 'en' | 'uz'
-          free_tests_used: number
-          subscription_status: 'free' | 'premium'
-          created_at: string
-          updated_at: string
+          locale: string | null
+          role: string | null
+          created_at: string | null
+          last_login_at: string | null
         }
         Insert: {
           id: string
           email: string
           full_name?: string | null
-          preferred_language?: 'en' | 'uz'
-          free_tests_used?: number
-          subscription_status?: 'free' | 'premium'
-          created_at?: string
-          updated_at?: string
+          locale?: string | null
+          role?: string | null
+          created_at?: string | null
+          last_login_at?: string | null
         }
         Update: {
           id?: string
           email?: string
           full_name?: string | null
-          preferred_language?: 'en' | 'uz'
-          free_tests_used?: number
-          subscription_status?: 'free' | 'premium'
-          created_at?: string
-          updated_at?: string
+          locale?: string | null
+          role?: string | null
+          created_at?: string | null
+          last_login_at?: string | null
         }
       }
       exam_results: {

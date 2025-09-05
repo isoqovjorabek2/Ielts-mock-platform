@@ -66,7 +66,7 @@ export function Dashboard() {
     : 0
 
   const totalTestsTaken = results.length
-  const freeTestsRemaining = Math.max(0, 1 - (profile?.free_tests_used || 0))
+  const freeTestsRemaining = 1 // Simplified for now
 
   const getExamTypeStats = () => {
     const stats: Record<string, { count: number; avgScore: number }> = {}
@@ -138,7 +138,7 @@ export function Dashboard() {
               <TrendingUp className="w-6 h-6 text-purple-600" />
             </div>
             <div className="text-2xl font-bold text-gray-900 mb-1">
-              {profile?.subscription_status === 'premium' ? 'Premium' : 'Free'}
+              {profile?.role === 'premium' ? 'Premium' : 'Student'}
             </div>
             <div className="text-sm text-gray-600">Account Status</div>
           </div>
@@ -234,7 +234,7 @@ export function Dashboard() {
                 <Link to="/profile" className="block w-full btn-outline text-center">
                   Edit Profile
                 </Link>
-                {profile?.subscription_status === 'free' && (
+                {profile?.role !== 'premium' && (
                   <button className="w-full btn-secondary">
                     {t('upgradeAccount')}
                   </button>

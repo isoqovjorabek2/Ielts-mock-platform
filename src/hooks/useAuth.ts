@@ -6,9 +6,10 @@ export interface UserProfile {
   id: string
   email: string
   full_name: string | null
-  preferred_language: 'en' | 'uz'
-  free_tests_used: number
-  subscription_status: 'free' | 'premium'
+  locale: string | null
+  role: string | null
+  created_at: string | null
+  last_login_at: string | null
 }
 
 export function useAuth() {
@@ -46,30 +47,12 @@ export function useAuth() {
   const fetchProfile = async (userId: string) => {
     try {
       const { data, error } = await supabase
-        .from('profiles')
+        .from('users')
         .select('*')
         .eq('id', userId)
         .single()
 
-      if (error && error.code === 'PGRST116') {
-        // Profile doesn't exist, create one
-        const newProfile = {
-          id: userId,
-          email: user?.email || '',
-          preferred_language: 'en' as const,
-          free_tests_used: 0,
-          subscription_status: 'free' as const
-        }
-
-        const { data: createdProfile, error: createError } = await supabase
-          .from('profiles')
-          .insert(newProfile)
-          .select()
-          .single()
-
-        if (createError) throw createError
-        setProfile(createdProfile)
-      } else if (error) {
+      if (error) {
         throw error
       } else {
         setProfile(data)
@@ -111,7 +94,7 @@ export function useAuth() {
     if (!user) return { error: new Error('No user logged in') }
 
     const { data, error } = await supabase
-      .from('profiles')
+      .from('users')
       .update(updates)
       .eq('id', user.id)
       .select()
@@ -126,15 +109,13 @@ export function useAuth() {
 
   const canTakeTest = () => {
     if (!profile) return false
-    return profile.subscription_status === 'premium' || profile.free_tests_used < 1
+    return profile.role === 'premium' || true // Allow all tests for now
   }
 
   const incrementFreeTestUsage = async () => {
-    if (!profile || profile.subscription_status === 'premium') return
+    if (!profile || profile.role === 'premium') return
 
-    await updateProfile({
-      free_tests_used: profile.free_tests_used + 1
-    })
+    // Update logic can be added here if needed
   }
 
   return {

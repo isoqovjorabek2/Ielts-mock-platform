@@ -11,7 +11,7 @@ export function Profile() {
   const { user, profile, updateProfile, loading: authLoading } = useAuth()
   const [formData, setFormData] = useState({
     full_name: profile?.full_name || '',
-    preferred_language: profile?.preferred_language || 'en'
+    locale: profile?.locale || 'en'
   })
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
@@ -43,8 +43,8 @@ export function Profile() {
       } else {
         setMessage('Profile updated successfully!')
         // Update language if changed
-        if (formData.preferred_language !== i18n.language) {
-          i18n.changeLanguage(formData.preferred_language)
+        if (formData.locale !== i18n.language) {
+          i18n.changeLanguage(formData.locale)
         }
       }
     } catch (err) {
@@ -129,7 +129,7 @@ export function Profile() {
 
             {/* Preferred Language */}
             <div>
-              <label htmlFor="preferred_language" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="locale" className="block text-sm font-medium text-gray-700 mb-1">
                 Preferred Language
               </label>
               <div className="relative">
@@ -137,9 +137,9 @@ export function Profile() {
                   <Globe className="h-5 w-5 text-gray-400" />
                 </div>
                 <select
-                  id="preferred_language"
-                  name="preferred_language"
-                  value={formData.preferred_language}
+                  id="locale"
+                  name="locale"
+                  value={formData.locale}
                   onChange={handleChange}
                   className="input-field pl-10"
                 >
@@ -156,13 +156,13 @@ export function Profile() {
                 <div>
                   <span className="text-gray-600">Account Status:</span>
                   <span className="ml-2 font-medium capitalize">
-                    {profile?.subscription_status || 'Free'}
+                    {profile?.role || 'student'}
                   </span>
                 </div>
                 <div>
                   <span className="text-gray-600">Free Tests Used:</span>
                   <span className="ml-2 font-medium">
-                    {profile?.free_tests_used || 0} / 1
+                    0 / 1
                   </span>
                 </div>
               </div>
