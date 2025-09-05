@@ -8,6 +8,7 @@ import { supabase } from '../lib/supabase'
 import { LoadingSpinner } from '../components/UI/LoadingSpinner'
 import { getScoreColor, formatTime } from '../lib/utils'
 import { RelatedContent, SEOLink } from '../components/UI/InternalLinks'
+import { RelatedContent, SEOLink } from '../components/UI/InternalLinks'
 
 interface ExamResult {
   id: string
@@ -162,6 +163,8 @@ export function Dashboard() {
                     className="btn-primary"
                     title="Start your first IELTS practice test"
                     aria-label="Take your first IELTS mock exam"
+                    title="Start your first IELTS practice test"
+                    aria-label="Take your first IELTS mock exam"
                   >
                     Take Your First Test
                   </SEOLink>
@@ -239,12 +242,16 @@ export function Dashboard() {
                   className="block w-full btn-primary text-center"
                   title="Take new IELTS practice test"
                   aria-label="Start a new IELTS mock exam"
+                  title="Take new IELTS practice test"
+                  aria-label="Start a new IELTS mock exam"
                 >
                   Take New Test
                 </SEOLink>
                 <SEOLink 
                   to="/profile" 
                   className="block w-full btn-outline text-center"
+                  title="Edit your profile settings"
+                  aria-label="Update your profile information"
                   title="Edit your profile settings"
                   aria-label="Update your profile information"
                 >
@@ -256,6 +263,8 @@ export function Dashboard() {
                     className="w-full btn-secondary text-center block"
                     title="Upgrade to premium IELTS practice"
                     aria-label="Upgrade your account for unlimited access"
+                    title="Upgrade to premium IELTS practice"
+                    aria-label="Upgrade your account for unlimited access"
                   >
                     {t('upgradeAccount')}
                   </SEOLink>
@@ -264,6 +273,8 @@ export function Dashboard() {
             </div>
           </div>
         </div>
+
+        <RelatedContent currentPage="dashboard" />
 
         <RelatedContent currentPage="dashboard" />
       </div>

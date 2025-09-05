@@ -16,6 +16,7 @@ import { useAuth } from '../hooks/useAuth'
 import { supabase } from '../lib/supabase'
 import { LoadingSpinner } from '../components/UI/LoadingSpinner'
 import { RelatedContent, SEOLink } from '../components/UI/InternalLinks'
+import { RelatedContent, SEOLink } from '../components/UI/InternalLinks'
 
 interface Price {
   id: string
@@ -243,6 +244,8 @@ export function Booking() {
                       className="w-full btn-primary text-center block"
                       title="Sign in to book IELTS supervised exam"
                       aria-label="Sign in to your account to book exam"
+                      title="Sign in to book IELTS supervised exam"
+                      aria-label="Sign in to your account to book exam"
                     >
                       Sign In to Book
                     </SEOLink>
@@ -251,6 +254,8 @@ export function Booking() {
                       <SEOLink 
                         to="/register" 
                         className="text-primary-600 hover:text-primary-500 font-medium"
+                        title="Create free account for IELTS practice"
+                        aria-label="Sign up for free IELTS practice account"
                         title="Create free account for IELTS practice"
                         aria-label="Sign up for free IELTS practice account"
                       >
@@ -263,6 +268,8 @@ export function Booking() {
                 <SEOLink 
                   to="/exams" 
                   className="w-full btn-outline text-center block"
+                  title="Try free online IELTS mock exam first"
+                  aria-label="Practice with free online IELTS tests"
                   title="Try free online IELTS mock exam first"
                   aria-label="Practice with free online IELTS tests"
                 >
@@ -339,6 +346,8 @@ export function Booking() {
             </a>
           </div>
         </div>
+
+        <RelatedContent currentPage="booking" />
 
         <RelatedContent currentPage="booking" />
       </div>

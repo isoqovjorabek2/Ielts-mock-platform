@@ -4,6 +4,7 @@ import { Trophy, Clock, Target, TrendingUp, Home } from 'lucide-react'
 import { Layout } from '../components/Layout/Layout'
 import { getScoreColor, getScoreBgColor, formatTime } from '../lib/utils'
 import { RelatedContent, SEOLink } from '../components/UI/InternalLinks'
+import { RelatedContent, SEOLink } from '../components/UI/InternalLinks'
 
 interface ResultsState {
   examType: string
@@ -189,12 +190,16 @@ export function Results() {
             className="btn-primary"
             title="Take another IELTS practice test"
             aria-label="Start another IELTS mock exam"
+            title="Take another IELTS practice test"
+            aria-label="Start another IELTS mock exam"
           >
             Take Another Test
           </SEOLink>
           <SEOLink 
             to="/dashboard" 
             className="btn-outline"
+            title="View your complete IELTS progress dashboard"
+            aria-label="Go to your progress dashboard"
             title="View your complete IELTS progress dashboard"
             aria-label="Go to your progress dashboard"
           >
@@ -205,11 +210,15 @@ export function Results() {
             className="btn-secondary flex items-center space-x-2"
             title="Return to IELTS practice homepage"
             aria-label="Go back to homepage"
+            title="Return to IELTS practice homepage"
+            aria-label="Go back to homepage"
           >
             <Home className="w-4 h-4" />
             <span>Back to Home</span>
           </SEOLink>
         </div>
+
+        <RelatedContent currentPage="results" />
 
         <RelatedContent currentPage="results" />
       </div>
