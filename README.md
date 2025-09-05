@@ -1,6 +1,8 @@
 # IELTS Mock Exam Platform
 
-A bilingual IELTS Mock Exam Platform built specifically for Uzbek students. This platform replicates the real exam environment with timed tests for all IELTS sections: Listening, Reading, Writing, and Speaking.
+A comprehensive bilingual IELTS Mock Exam Platform built specifically for Uzbek students. This platform replicates the real exam environment with timed tests for all IELTS sections: Listening, Reading, Writing, and Speaking.
+
+🌐 **Live Demo**: [View the deployed application](https://your-deployment-url.com)
 
 ## Features
 
@@ -21,12 +23,13 @@ A bilingual IELTS Mock Exam Platform built specifically for Uzbek students. This
 
 ## Tech Stack
 
-- **Frontend**: React 18 + TypeScript + Vite
+- **Frontend**: React 18 + TypeScript + Vite 6
 - **Styling**: Tailwind CSS with custom design system
 - **Backend**: Supabase (Authentication, Database, Storage)
 - **Internationalization**: react-i18next for bilingual support
 - **State Management**: React hooks + Supabase client
 - **Routing**: React Router DOM
+- **Deployment**: Bolt Hosting
 
 ## Getting Started
 
@@ -39,7 +42,7 @@ A bilingual IELTS Mock Exam Platform built specifically for Uzbek students. This
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/yourusername/ielts-mock-platform.git
    cd ielts-mock-platform
    ```
 
@@ -104,6 +107,9 @@ A bilingual IELTS Mock Exam Platform built specifically for Uzbek students. This
    npm run dev
    ```
 
+6. **Open your browser**
+   Navigate to `http://localhost:5173` to view the application.
+
 ## Project Structure
 
 ```
@@ -118,6 +124,13 @@ src/
 │   └── Auth/           # Authentication pages
 └── types/              # TypeScript type definitions
 ```
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint
 
 ## Key Components
 
@@ -145,6 +158,13 @@ The platform supports English and Uzbek languages:
 - Language preference is saved per user
 - Easy to add more languages
 
+## Database Schema
+
+The application uses Supabase with the following main tables:
+- `profiles` - User profile information
+- `exam_results` - Test results and scores
+- `prices` - Pricing information for premium features
+
 ## Payment Integration (Ready for Implementation)
 
 The platform is structured to support local Uzbek payment methods:
@@ -155,6 +175,23 @@ The platform is structured to support local Uzbek payment methods:
 
 Payment integration points are prepared in the codebase for easy implementation.
 
+## Environment Variables
+
+Create a `.env` file in the root directory with:
+
+```env
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+## Deployment
+
+The application is configured for deployment on Bolt Hosting. The build process:
+
+1. Runs TypeScript compilation
+2. Builds optimized production bundle with Vite
+3. Deploys static assets to CDN
+
 ## Contributing
 
 1. Fork the repository
@@ -163,14 +200,27 @@ Payment integration points are prepared in the codebase for easy implementation.
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+## Issues and Support
+
+If you encounter any issues or have questions:
+1. Check the [Issues](https://github.com/yourusername/ielts-mock-platform/issues) page
+2. Create a new issue with detailed description
+3. Contact support at support@ieltsmock.uz
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Support
+## Acknowledgments
 
-For support and questions, please contact [your-email@example.com]
+- Built with [React](https://reactjs.org/) and [TypeScript](https://www.typescriptlang.org/)
+- Powered by [Supabase](https://supabase.com/) for backend services
+- Styled with [Tailwind CSS](https://tailwindcss.com/)
+- Icons from [Lucide React](https://lucide.dev/)
+- Deployed on [Bolt Hosting](https://bolt.new/)
 
 ---
 
-Built with ❤️ for Uzbek IELTS students
+**Built with ❤️ for Uzbek IELTS students**
+
+⭐ If this project helped you, please give it a star on GitHub!
