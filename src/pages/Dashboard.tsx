@@ -7,6 +7,7 @@ import { useAuth } from '../hooks/useAuth'
 import { supabase } from '../lib/supabase'
 import { LoadingSpinner } from '../components/UI/LoadingSpinner'
 import { getScoreColor, formatTime } from '../lib/utils'
+import { RelatedContent, SEOLink } from '../components/UI/InternalLinks'
 
 interface ExamResult {
   id: string
@@ -156,9 +157,14 @@ export function Dashboard() {
                 <div className="text-center py-8">
                   <BookOpen className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                   <p className="text-gray-600 mb-4">No tests completed yet</p>
-                  <Link to="/exams" className="btn-primary">
+                  <SEOLink 
+                    to="/exams" 
+                    className="btn-primary"
+                    title="Start your first IELTS practice test"
+                    aria-label="Take your first IELTS mock exam"
+                  >
                     Take Your First Test
-                  </Link>
+                  </SEOLink>
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -228,21 +234,38 @@ export function Dashboard() {
               </h3>
               
               <div className="space-y-3">
-                <Link to="/exams" className="block w-full btn-primary text-center">
+                <SEOLink 
+                  to="/exams" 
+                  className="block w-full btn-primary text-center"
+                  title="Take new IELTS practice test"
+                  aria-label="Start a new IELTS mock exam"
+                >
                   Take New Test
-                </Link>
-                <Link to="/profile" className="block w-full btn-outline text-center">
+                </SEOLink>
+                <SEOLink 
+                  to="/profile" 
+                  className="block w-full btn-outline text-center"
+                  title="Edit your profile settings"
+                  aria-label="Update your profile information"
+                >
                   Edit Profile
-                </Link>
+                </SEOLink>
                 {profile?.subscription_status !== 'premium' && (
-                  <button className="w-full btn-secondary">
+                  <SEOLink 
+                    to="/booking" 
+                    className="w-full btn-secondary text-center block"
+                    title="Upgrade to premium IELTS practice"
+                    aria-label="Upgrade your account for unlimited access"
+                  >
                     {t('upgradeAccount')}
-                  </button>
+                  </SEOLink>
                 )}
               </div>
             </div>
           </div>
         </div>
+
+        <RelatedContent currentPage="dashboard" />
       </div>
     </Layout>
   )

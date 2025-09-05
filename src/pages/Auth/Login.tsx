@@ -74,7 +74,12 @@ export function Login() {
             </h2>
             <p className="mt-2 text-sm text-gray-600">
               {t('dontHaveAccount')}{' '}
-              <Link to="/register" className="font-medium text-primary-600 hover:text-primary-500">
+              <Link 
+                to="/register" 
+                className="font-medium text-primary-600 hover:text-primary-500"
+                title="Create free IELTS practice account"
+                aria-label="Sign up for free IELTS practice account"
+              >
                 {t('signUp')}
               </Link>
             </p>

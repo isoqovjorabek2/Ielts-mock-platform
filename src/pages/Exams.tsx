@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Layout } from '../components/Layout/Layout'
 import { ExamCard } from '../components/Exam/ExamCard'
 import { useAuth } from '../hooks/useAuth'
+import { RelatedContent, QuickNavigation } from '../components/UI/InternalLinks'
 
 export function Exams() {
   const { t } = useTranslation()
@@ -79,6 +80,8 @@ export function Exams() {
               <button
                 onClick={() => navigate('/register')}
                 className="bg-white text-primary-600 hover:bg-gray-50 font-semibold py-3 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+                title="Create free account to access IELTS practice tests"
+                aria-label="Sign up for free IELTS practice account"
               >
                 {t('register')}
               </button>
@@ -86,17 +89,37 @@ export function Exams() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {examTypes.map((exam) => (
-            <ExamCard
-              key={exam.type}
-              type={exam.type}
-              duration={exam.duration}
-              questions={exam.questions}
-              onStart={() => handleStartExam(exam.type)}
-              disabled={user ? !canTakeTest() : false}
-            />
-          ))}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div className="lg:col-span-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {examTypes.map((exam) => (
+                <ExamCard
+                  key={exam.type}
+                  type={exam.type}
+                  duration={exam.duration}
+                  questions={exam.questions}
+                  onStart={() => handleStartExam(exam.type)}
+                  disabled={user ? !canTakeTest() : false}
+                />
+              ))}
+            </div>
+          </div>
+          
+          <div className="lg:col-span-1">
+            <div className="sticky top-8 space-y-6">
+              <QuickNavigation />
+              
+              <div className="bg-primary-50 border border-primary-200 rounded-xl p-4">
+                <h4 className="font-medium text-primary-900 mb-3">💡 {t('studyTips')}</h4>
+                <ul className="text-sm text-primary-800 space-y-2">
+                  <li>• {t('practiceRegularly')}</li>
+                  <li>• {t('timeYourself')}</li>
+                  <li>• {t('reviewMistakes')}</li>
+                  <li>• {t('focusOnWeakAreas')}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
 
         {user && !canTakeTest() && (
@@ -114,6 +137,8 @@ export function Exams() {
             </div>
           </div>
         )}
+
+        <RelatedContent currentPage="exams" />
       </div>
     </Layout>
   )

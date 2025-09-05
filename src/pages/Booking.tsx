@@ -15,6 +15,7 @@ import { Layout } from '../components/Layout/Layout'
 import { useAuth } from '../hooks/useAuth'
 import { supabase } from '../lib/supabase'
 import { LoadingSpinner } from '../components/UI/LoadingSpinner'
+import { RelatedContent, SEOLink } from '../components/UI/InternalLinks'
 
 interface Price {
   id: string
@@ -237,21 +238,36 @@ export function Booking() {
                   </button>
                 ) : (
                   <div className="space-y-3">
-                    <Link to="/login" className="w-full btn-primary text-center block">
+                    <SEOLink 
+                      to="/login" 
+                      className="w-full btn-primary text-center block"
+                      title="Sign in to book IELTS supervised exam"
+                      aria-label="Sign in to your account to book exam"
+                    >
                       Sign In to Book
-                    </Link>
+                    </SEOLink>
                     <p className="text-sm text-gray-600 text-center">
                       Don't have an account?{' '}
-                      <Link to="/register" className="text-primary-600 hover:text-primary-500 font-medium">
+                      <SEOLink 
+                        to="/register" 
+                        className="text-primary-600 hover:text-primary-500 font-medium"
+                        title="Create free account for IELTS practice"
+                        aria-label="Sign up for free IELTS practice account"
+                      >
                         Sign up free
-                      </Link>
+                      </SEOLink>
                     </p>
                   </div>
                 )}
                 
-                <Link to="/exams" className="w-full btn-outline text-center block">
+                <SEOLink 
+                  to="/exams" 
+                  className="w-full btn-outline text-center block"
+                  title="Try free online IELTS mock exam first"
+                  aria-label="Practice with free online IELTS tests"
+                >
                   Try Free Online Mock First
-                </Link>
+                </SEOLink>
               </div>
             </div>
           </div>
@@ -323,6 +339,8 @@ export function Booking() {
             </a>
           </div>
         </div>
+
+        <RelatedContent currentPage="booking" />
       </div>
     </Layout>
   )

@@ -20,6 +20,7 @@ import {
 } from 'lucide-react'
 import { Layout } from '../components/Layout/Layout'
 import { useAuth } from '../hooks/useAuth'
+import { RelatedContent } from '../components/UI/InternalLinks'
 
 export function Home() {
   const { t } = useTranslation()
@@ -123,7 +124,7 @@ export function Home() {
   ]
 
   return (
-    <Layout>
+    <Layout showBreadcrumbs={false}>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
@@ -158,22 +159,42 @@ export function Home() {
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 {user ? (
                   <>
-                    <Link to="/exams" className="group bg-white text-primary-600 hover:bg-gray-50 font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl">
+                    <Link 
+                      to="/exams" 
+                      className="group bg-white text-primary-600 hover:bg-gray-50 font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
+                      title="Continue practicing with IELTS mock exams"
+                      aria-label="Continue practicing with mock exams"
+                    >
                       <Play className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       <span>Continue Practice</span>
                     </Link>
-                    <Link to="/dashboard" className="group border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2">
+                    <Link 
+                      to="/dashboard" 
+                      className="group border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2"
+                      title="View your IELTS practice progress and results"
+                      aria-label="View your progress dashboard"
+                    >
                       <TrendingUp className="w-5 h-5" />
                       <span>View Progress</span>
                     </Link>
                   </>
                 ) : (
                   <>
-                    <Link to="/register" className="group bg-white text-primary-600 hover:bg-gray-50 font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl">
+                    <Link 
+                      to="/register" 
+                      className="group bg-white text-primary-600 hover:bg-gray-50 font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
+                      title="Start your free IELTS practice trial"
+                      aria-label="Sign up for free IELTS practice"
+                    >
                       <span>Start Free Trial</span>
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
-                    <Link to="/exams" className="group border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2">
+                    <Link 
+                      to="/exams" 
+                      className="group border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2"
+                      title="Try IELTS mock exam demo"
+                      aria-label="Try demo IELTS practice test"
+                    >
                       <Play className="w-5 h-5" />
                       <span>Try Demo</span>
                     </Link>
@@ -334,6 +355,8 @@ export function Home() {
                   
                   <Link 
                     to={`/exam/${exam.name}`}
+                    title={`Start ${t(exam.name)} IELTS practice test`}
+                    aria-label={`Begin ${t(exam.name)} section practice`}
                     className="group/btn w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2"
                   >
                     <span>Practice Now</span>
@@ -345,7 +368,12 @@ export function Home() {
           </div>
 
           <div className="text-center mt-12">
-            <Link to="/exams" className="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl">
+            <Link 
+              to="/exams" 
+              className="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+              title="View all IELTS practice tests and mock exams"
+              aria-label="Browse all available IELTS practice tests"
+            >
               <span>View All Practice Tests</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
@@ -416,24 +444,46 @@ export function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             {user ? (
               <>
-                <Link to="/exams" className="bg-white text-primary-600 hover:bg-gray-50 font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl">
+                <Link 
+                  to="/exams" 
+                  className="bg-white text-primary-600 hover:bg-gray-50 font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+                  title="Continue with IELTS practice tests"
+                  aria-label="Continue practicing IELTS mock exams"
+                >
                   Continue Practice Tests
                 </Link>
-                <Link to="/booking" className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-300">
+                <Link 
+                  to="/booking" 
+                  className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-300"
+                  title="Book supervised IELTS mock exam locally"
+                  aria-label="Book local supervised IELTS exam"
+                >
                   Book Local Exam
                 </Link>
               </>
             ) : (
               <>
-                <Link to="/register" className="bg-white text-primary-600 hover:bg-gray-50 font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl">
+                <Link 
+                  to="/register" 
+                  className="bg-white text-primary-600 hover:bg-gray-50 font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+                  title="Start free IELTS practice trial"
+                  aria-label="Sign up for free IELTS practice account"
+                >
                   Start Free Trial
                 </Link>
-                <Link to="/exams" className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-300">
+                <Link 
+                  to="/exams" 
+                  className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-300"
+                  title="Try IELTS demo test without registration"
+                  aria-label="Try demo IELTS practice test"
+                >
                   Try Demo Test
                 </Link>
               </>
             )}
           </div>
+
+          <RelatedContent currentPage="home" />
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-8 text-primary-100">
             <div className="flex items-center space-x-2">

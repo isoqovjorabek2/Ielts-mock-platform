@@ -79,7 +79,12 @@ export function Register() {
             </h2>
             <p className="mt-2 text-sm text-gray-600">
               {t('alreadyHaveAccount')}{' '}
-              <Link to="/login" className="font-medium text-primary-600 hover:text-primary-500">
+              <Link 
+                to="/login" 
+                className="font-medium text-primary-600 hover:text-primary-500"
+                title="Sign in to your IELTS practice account"
+                aria-label="Sign in to existing account"
+              >
                 {t('signIn')}
               </Link>
             </p>
