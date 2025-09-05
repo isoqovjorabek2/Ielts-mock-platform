@@ -16,7 +16,6 @@ import { useAuth } from '../hooks/useAuth'
 import { supabase } from '../lib/supabase'
 import { LoadingSpinner } from '../components/UI/LoadingSpinner'
 import { RelatedContent, SEOLink } from '../components/UI/InternalLinks'
-import { RelatedContent, SEOLink } from '../components/UI/InternalLinks'
 
 interface Price {
   id: string
@@ -349,7 +348,6 @@ export function Booking() {
 
         <RelatedContent currentPage="booking" />
 
-        <RelatedContent currentPage="booking" />
       </div>
     </Layout>
   )

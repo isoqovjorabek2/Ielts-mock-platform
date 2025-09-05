@@ -21,7 +21,6 @@ import {
 import { Layout } from '../components/Layout/Layout'
 import { useAuth } from '../hooks/useAuth'
 import { RelatedContent } from '../components/UI/InternalLinks'
-import { RelatedContent } from '../components/UI/InternalLinks'
 
 export function Home() {
   const { t } = useTranslation()
@@ -506,7 +505,6 @@ export function Home() {
 
           <RelatedContent currentPage="home" />
 
-          <RelatedContent currentPage="home" />
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-8 text-primary-100">
             <div className="flex items-center space-x-2">

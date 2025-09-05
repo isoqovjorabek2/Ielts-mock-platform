@@ -4,7 +4,6 @@ import { Trophy, Clock, Target, TrendingUp, Home } from 'lucide-react'
 import { Layout } from '../components/Layout/Layout'
 import { getScoreColor, getScoreBgColor, formatTime } from '../lib/utils'
 import { RelatedContent, SEOLink } from '../components/UI/InternalLinks'
-import { RelatedContent, SEOLink } from '../components/UI/InternalLinks'
 
 interface ResultsState {
   examType: string
@@ -220,7 +219,6 @@ export function Results() {
 
         <RelatedContent currentPage="results" />
 
-        <RelatedContent currentPage="results" />
       </div>
     </Layout>
   )

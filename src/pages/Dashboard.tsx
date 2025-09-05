@@ -8,7 +8,6 @@ import { supabase } from '../lib/supabase'
 import { LoadingSpinner } from '../components/UI/LoadingSpinner'
 import { getScoreColor, formatTime } from '../lib/utils'
 import { RelatedContent, SEOLink } from '../components/UI/InternalLinks'
-import { RelatedContent, SEOLink } from '../components/UI/InternalLinks'
 
 interface ExamResult {
   id: string
@@ -276,7 +275,6 @@ export function Dashboard() {
 
         <RelatedContent currentPage="dashboard" />
 
-        <RelatedContent currentPage="dashboard" />
       </div>
     </Layout>
   )
