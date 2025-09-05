@@ -21,10 +21,10 @@ export function Dashboard() {
   const { t } = useTranslation()
   const { user, profile, loading: authLoading } = useAuth()
   const [results, setResults] = useState<ExamResult[]>([])
-  const [loading, setLoading] = useState(true)
+  const [dashboardLoading, setDashboardLoading] = useState(true)
 
   useEffect(() => {
-    if (user && !authLoading) {
+    if (!authLoading && user) {
       fetchResults()
     }
   }, [user, authLoading])
@@ -43,11 +43,22 @@ export function Dashboard() {
     } catch (error) {
       console.error('Error fetching results:', error)
     } finally {
-      setLoading(false)
+      setDashboardLoading(false)
     }
   }
 
-  if (authLoading || loading) {
+  // If auth is still loading, don't render anything (App.tsx will show global spinner)
+  if (authLoading) {
+    return null
+  }
+
+  // If auth is done but no user, redirect to login
+  if (!user) {
+    return <Navigate to="/login" replace />
+  }
+
+  // If we have a user but dashboard data is still loading, show local spinner
+  if (dashboardLoading) {
     return (
       <Layout>
         <div className="flex items-center justify-center min-h-96">
@@ -57,9 +68,6 @@ export function Dashboard() {
     )
   }
 
-  if (!user) {
-    return <Navigate to="/login" replace />
-  }
 
   const averageScore = results.length > 0 
     ? results.reduce((sum, result) => sum + result.overall_score, 0) / results.length

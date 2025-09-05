@@ -17,35 +17,65 @@ export function useAuth() {
   const [user, setUser] = useState<User | null>(null)
   const [profile, setProfile] = useState<UserProfile | null>(null)
   const [loading, setLoading] = useState(true)
+  const [mounted, setMounted] = useState(true)
 
   useEffect(() => {
-    // Get initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null)
-      if (session?.user) {
-        fetchProfile(session.user.id)
-      } else {
-        setLoading(false)
+    const loadUserAndProfile = async () => {
+      try {
+        setLoading(true)
+        
+        // Get initial session
+        const { data: { session } } = await supabase.auth.getSession()
+        
+        if (!mounted) return
+        
+        setUser(session?.user ?? null)
+        
+        if (session?.user) {
+          await fetchProfile(session.user.id)
+        }
+      } catch (error) {
+        console.error('Error loading user and profile:', error)
+        if (mounted) {
+          setUser(null)
+          setProfile(null)
+        }
+      } finally {
+        if (mounted) {
+          setLoading(false)
+        }
       }
-    })
+    }
+
+    loadUserAndProfile()
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
-        setUser(session?.user ?? null)
-        if (session?.user) {
-          await fetchProfile(session.user.id)
-        } else {
-          setProfile(null)
-          setLoading(false)
+        if (!mounted) return
+        
+        try {
+          setUser(session?.user ?? null)
+          if (session?.user) {
+            await fetchProfile(session.user.id)
+          } else {
+            setProfile(null)
+          }
+        } catch (error) {
+          console.error('Error in auth state change:', error)
         }
       }
     )
 
-    return () => subscription.unsubscribe()
+    return () => {
+      setMounted(false)
+      subscription.unsubscribe()
+    }
   }, [])
 
   const fetchProfile = async (userId: string) => {
+    if (!mounted) return
+    
     try {
       const { data, error } = await supabase
         .from('profiles')
@@ -56,13 +86,15 @@ export function useAuth() {
       if (error) {
         throw error
       } else {
-        setProfile(data)
+        if (mounted) {
+          setProfile(data)
+        }
       }
     } catch (error) {
       console.error('Error fetching profile:', error)
-      setProfile(null)
-    } finally {
-      setLoading(false)
+      if (mounted) {
+        setProfile(null)
+      }
     }
   }
 

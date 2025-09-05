@@ -16,10 +16,10 @@ import { Profile } from './pages/Profile'
 
 function App() {
   const { ready } = useTranslation()
-  const { user, loading: authLoading } = useAuth()
+  const { loading: authLoading } = useAuth()
 
-  // Only show loading if i18n is not ready, or if auth is still loading AND we don't have a user yet
-  if (!ready || (authLoading && user === null)) {
+  // Show loading if i18n is not ready or auth is still loading
+  if (!ready || authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <LoadingSpinner size="lg" />
