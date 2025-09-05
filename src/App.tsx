@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useAuth } from './hooks/useAuth'
+import { LoadingSpinner } from './components/UI/LoadingSpinner'
 import './lib/i18n'
 
 // Pages
@@ -14,11 +16,12 @@ import { Profile } from './pages/Profile'
 
 function App() {
   const { ready } = useTranslation()
+  const { loading: authLoading } = useAuth()
 
-  if (!ready) {
+  if (!ready || authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+        <LoadingSpinner size="lg" />
       </div>
     )
   }

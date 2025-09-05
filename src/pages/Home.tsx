@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { BookOpen, Clock, Users, Award, Headphones, PenTool, Mic } from 'lucide-react'
 import { Layout } from '../components/Layout/Layout'
+import { useAuth } from '../hooks/useAuth'
 
 export function Home() {
   const { t } = useTranslation()
+  const { user } = useAuth()
 
   const features = [
     {
@@ -72,14 +74,25 @@ export function Home() {
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
               {t('welcomeSubtitle')}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/exams" className="btn-primary text-lg px-8 py-3">
-                {t('getStarted')}
-              </Link>
-              <Link to="/register" className="btn-outline text-lg px-8 py-3">
-                {t('register')}
-              </Link>
-            </div>
+            {user ? (
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/dashboard" className="btn-primary text-lg px-8 py-3">
+                  Go to Dashboard
+                </Link>
+                <Link to="/exams" className="btn-outline text-lg px-8 py-3">
+                  Take Mock Exams
+                </Link>
+              </div>
+            ) : (
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/exams" className="btn-primary text-lg px-8 py-3">
+                  {t('getStarted')}
+                </Link>
+                <Link to="/register" className="btn-outline text-lg px-8 py-3">
+                  {t('register')}
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -144,9 +157,15 @@ export function Home() {
           </div>
 
           <div className="text-center mt-12">
-            <Link to="/exams" className="btn-primary text-lg px-8 py-3">
-              Start Practice Tests
-            </Link>
+            {user ? (
+              <Link to="/exams" className="btn-primary text-lg px-8 py-3">
+                Continue Practice Tests
+              </Link>
+            ) : (
+              <Link to="/exams" className="btn-primary text-lg px-8 py-3">
+                Start Practice Tests
+              </Link>
+            )}
           </div>
         </div>
       </section>
@@ -160,9 +179,15 @@ export function Home() {
           <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
             Join thousands of Uzbek students who have improved their IELTS scores with our platform
           </p>
-          <Link to="/register" className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors">
-            Get Started Free
-          </Link>
+          {user ? (
+            <Link to="/dashboard" className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors">
+              Go to Dashboard
+            </Link>
+          ) : (
+            <Link to="/register" className="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-colors">
+              Get Started Free
+            </Link>
+          )}
         </div>
       </section>
     </Layout>
