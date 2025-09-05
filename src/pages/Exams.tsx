@@ -56,26 +56,29 @@ export function Exams() {
     <Layout>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             {t('exams')}
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Choose from our comprehensive collection of IELTS mock exams
+          <p className="text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Choose from our comprehensive collection of IELTS mock exams designed to replicate real test conditions
           </p>
         </div>
 
         {!user && (
-          <div className="bg-primary-50 border border-primary-200 rounded-lg p-6 mb-8">
+          <div className="bg-gradient-to-r from-primary-50 to-primary-100 border border-primary-200 rounded-2xl p-8 mb-12 shadow-lg">
             <div className="text-center">
-              <h3 className="text-lg font-semibold text-primary-900 mb-2">
+              <div className="bg-primary-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-white font-bold text-xl">🎯</span>
+              </div>
+              <h3 className="text-2xl font-bold text-primary-900 mb-4">
                 Sign up to start practicing
               </h3>
-              <p className="text-primary-700 mb-4">
-                Create a free account to access one complete mock exam
+              <p className="text-lg text-primary-700 mb-6 max-w-md mx-auto">
+                Create a free account to access one complete mock exam with detailed feedback
               </p>
               <button
                 onClick={() => navigate('/register')}
-                className="btn-primary"
+                className="bg-white text-primary-600 hover:bg-gray-50 font-semibold py-3 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 {t('register')}
               </button>
@@ -83,7 +86,7 @@ export function Exams() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {examTypes.map((exam) => (
             <ExamCard
               key={exam.type}
@@ -97,15 +100,15 @@ export function Exams() {
         </div>
 
         {user && !canTakeTest() && (
-          <div className="mt-12 text-center">
-            <div className="bg-warning-50 border border-warning-200 rounded-lg p-6 max-w-md mx-auto">
-              <h3 className="text-lg font-semibold text-warning-900 mb-2">
+          <div className="mt-16 text-center">
+            <div className="bg-gradient-to-r from-warning-50 to-warning-100 border border-warning-200 rounded-2xl p-8 max-w-lg mx-auto shadow-lg">
+              <h3 className="text-2xl font-bold text-warning-900 mb-4">
                 {t('freeTrialEnded')}
               </h3>
-              <p className="text-warning-700 mb-4">
+              <p className="text-lg text-warning-700 mb-6">
                 {t('upgradeToAccess')}
               </p>
-              <button className="btn-primary">
+              <button className="bg-warning-600 hover:bg-warning-700 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl">
                 {t('upgradeAccount')}
               </button>
             </div>

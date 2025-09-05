@@ -38,26 +38,26 @@ export function Header() {
           <nav className="hidden md:flex items-center space-x-8">
             <Link
               to="/"
-              className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+              className="text-gray-700 hover:text-primary-600 font-semibold transition-all duration-300 hover:scale-105"
             >
               {t('home')}
             </Link>
             <Link
               to="/exams"
-              className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+              className="text-gray-700 hover:text-primary-600 font-semibold transition-all duration-300 hover:scale-105"
             >
               {t('exams')}
             </Link>
             <Link
               to="/booking"
-              className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+              className="text-gray-700 hover:text-primary-600 font-semibold transition-all duration-300 hover:scale-105"
             >
               Book Exam
             </Link>
             {user && (
               <Link
                 to="/dashboard"
-                className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+                className="text-gray-700 hover:text-primary-600 font-semibold transition-all duration-300 hover:scale-105"
               >
                 {t('dashboard')}
               </Link>
@@ -69,7 +69,7 @@ export function Header() {
             {/* Language toggle */}
             <button
               onClick={toggleLanguage}
-              className="flex items-center space-x-1 text-gray-700 hover:text-primary-600 transition-colors"
+              className="flex items-center space-x-1 text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 bg-gray-50 hover:bg-gray-100 px-3 py-2 rounded-lg"
             >
               <Globe className="w-4 h-4" />
               <span className="text-sm font-medium">
@@ -81,7 +81,7 @@ export function Header() {
               <div className="relative">
                 <button
                   onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
-                  className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors"
+                  className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-all duration-300 hover:scale-105 bg-gray-50 hover:bg-gray-100 px-3 py-2 rounded-lg"
                 >
                   <User className="w-5 h-5" />
                   <span className="text-sm font-medium">
@@ -93,14 +93,14 @@ export function Header() {
                   <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50">
                     <Link
                       to="/profile"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200"
                       onClick={() => setIsProfileMenuOpen(false)}
                     >
                       {t('profile')}
                     </Link>
                     <button
                       onClick={handleSignOut}
-                      className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center space-x-2"
+                      className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center space-x-2 transition-colors duration-200"
                     >
                       <LogOut className="w-4 h-4" />
                       <span>{t('logout')}</span>
@@ -112,13 +112,13 @@ export function Header() {
               <div className="flex items-center space-x-3">
                 <Link
                   to="/login"
-                  className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
+                  className="text-gray-700 hover:text-primary-600 font-semibold transition-all duration-300 hover:scale-105"
                 >
                   {t('login')}
                 </Link>
                 <Link
                   to="/register"
-                  className="btn-primary"
+                  className="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
                 >
                   {t('register')}
                 </Link>
