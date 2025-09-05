@@ -51,16 +51,10 @@ export function useAuth() {
         .from('profiles')
         .select('*')
         .eq('id', userId)
-        .single()
+        .maybeSingle()
 
       if (error) {
-        if (error.code === 'PGRST116') {
-          // Profile doesn't exist, this is normal for new users
-          console.log('Profile not found for user:', userId)
-          setProfile(null)
-        } else {
-          throw error
-        }
+        throw error
       } else {
         setProfile(data)
       }
