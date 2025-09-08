@@ -189,7 +189,7 @@ export function Results() {
             className="btn-primary"
             aria-label="Start another IELTS mock exam"
             title="Take another IELTS practice test"
-            aria-label="Start another IELTS mock exam"
+          >
             Take Another Test
           </SEOLink>
           <SEOLink 
@@ -203,7 +203,6 @@ export function Results() {
           <SEOLink 
             to="/" 
             className="btn-secondary flex items-center space-x-2"
-            aria-label="Go back to homepage"
             aria-label="Go back to homepage"
           >
             <Home className="w-4 h-4" />
