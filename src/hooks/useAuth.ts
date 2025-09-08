@@ -57,12 +57,20 @@ export function useAuth() {
         .maybeSingle()
 
       if (error) {
+        console.error('Supabase profile fetch error:', error)
+        console.error('Error details:', {
+          message: error.message,
+          details: error.details,
+          hint: error.hint,
+          code: error.code
+        })
         throw error
       } else {
         setProfile(data)
       }
     } catch (error) {
       console.error('Error fetching profile:', error)
+      console.error('Full error object:', error)
       setProfile(null)
     } finally {
       setLoading(false)
@@ -84,11 +92,21 @@ export function useAuth() {
         .select()
         .single()
 
-      if (error) throw error
+      if (error) {
+        console.error('Supabase profile creation error:', error)
+        console.error('Error details:', {
+          message: error.message,
+          details: error.details,
+          hint: error.hint,
+          code: error.code
+        })
+        throw error
+      }
       setProfile(data)
       return { data, error: null }
     } catch (error) {
       console.error('Error creating profile:', error)
+      console.error('Full error object:', error)
       return { data: null, error }
     }
   }
@@ -148,22 +166,40 @@ export function useAuth() {
     if (!profile) {
       const createResult = await createProfile(user.id, user.email!, user.user_metadata?.full_name)
       if (createResult.error) {
+        console.error('Failed to create profile before update:', createResult.error)
         return createResult
       }
     }
 
-    const { data, error } = await supabase
-      .from('profiles')
-      .update(updates)
-      .eq('id', user.id)
-      .select()
-      .single()
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .update(updates)
+        .eq('id', user.id)
+        .select()
+        .single()
 
-    if (!error && data) {
-      setProfile(data)
+      if (error) {
+        console.error('Supabase profile update error:', error)
+        console.error('Error details:', {
+          message: error.message,
+          details: error.details,
+          hint: error.hint,
+          code: error.code
+        })
+        return { data: null, error }
+      }
+
+      if (data) {
+        setProfile(data)
+      }
+
+      return { data, error: null }
+    } catch (error) {
+      console.error('Error updating profile:', error)
+      console.error('Full error object:', error)
+      return { data: null, error: error as any }
     }
-
-    return { data, error }
   }
 
   const canTakeTest = () => {

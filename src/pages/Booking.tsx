@@ -45,10 +45,20 @@ export function Booking() {
         .eq('is_active', true)
         .order('created_at', { ascending: false })
 
-      if (error) throw error
+      if (error) {
+        console.error('Supabase prices fetch error:', error)
+        console.error('Error details:', {
+          message: error.message,
+          details: error.details,
+          hint: error.hint,
+          code: error.code
+        })
+        throw error
+      }
       setPrices(data || [])
     } catch (error) {
       console.error('Error fetching prices:', error)
+      console.error('Full error object:', error)
     } finally {
       setLoading(false)
     }
@@ -161,7 +171,7 @@ export function Booking() {
         </div>
 
         {/* Pricing Card */}
-        {fullExamPrice && (
+        {fullExamPrice ? (
           <div className="max-w-2xl mx-auto">
             <div className="card border-2 border-primary-200 relative overflow-hidden">
               {/* Popular badge */}
@@ -274,6 +284,36 @@ export function Booking() {
                 >
                   Try Free Online Mock First
                 </SEOLink>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="max-w-2xl mx-auto">
+            <div className="card text-center">
+              <div className="bg-warning-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BookOpen className="w-8 h-8 text-warning-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                Pricing Information Unavailable
+              </h3>
+              <p className="text-gray-600 mb-6">
+                We're currently updating our pricing. Please check back later or contact support for more information.
+              </p>
+              <div className="space-y-3">
+                <SEOLink 
+                  to="/exams" 
+                  className="w-full btn-primary text-center block"
+                  title="Try free online IELTS mock exam"
+                  aria-label="Practice with free online IELTS tests"
+                >
+                  Try Free Online Mock Exam
+                </SEOLink>
+                <a 
+                  href="mailto:support@ieltsmock.uz" 
+                  className="w-full btn-outline text-center block"
+                >
+                  Contact Support
+                </a>
               </div>
             </div>
           </div>

@@ -39,10 +39,20 @@ export function Dashboard() {
         .order('completed_at', { ascending: false })
         .limit(10)
 
-      if (error) throw error
+      if (error) {
+        console.error('Supabase exam results fetch error:', error)
+        console.error('Error details:', {
+          message: error.message,
+          details: error.details,
+          hint: error.hint,
+          code: error.code
+        })
+        throw error
+      }
       setResults(data || [])
     } catch (error) {
       console.error('Error fetching results:', error)
+      console.error('Full error object:', error)
     } finally {
       setLoading(false)
     }
@@ -67,7 +77,7 @@ export function Dashboard() {
     : 0
 
   const totalTestsTaken = results.length
-  const freeTestsRemaining = 1 // Simplified for now
+  const freeTestsRemaining = profile ? Math.max(0, 1 - profile.free_tests_used) : 1
 
   const getExamTypeStats = () => {
     const stats: Record<string, { count: number; avgScore: number }> = {}
