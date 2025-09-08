@@ -252,8 +252,8 @@ export function Booking() {
                       to="/login" 
                       className="w-full btn-primary text-center block"
                       title="Sign in to book IELTS supervised exam"
-                      title="Sign in to book IELTS supervised exam"
                       aria-label="Sign in to your account to book exam"
+                    >
                       Sign In to Book
                     </SEOLink>
                     <p className="text-sm text-gray-600 text-center">
@@ -261,7 +261,6 @@ export function Booking() {
                       <SEOLink 
                         to="/register" 
                         className="text-primary-600 hover:text-primary-500 font-medium"
-                        title="Create free account for IELTS practice"
                         title="Create free account for IELTS practice"
                       >
                         Sign up free
@@ -273,7 +272,6 @@ export function Booking() {
                 <SEOLink 
                   to="/exams" 
                   className="w-full btn-outline text-center block"
-                  aria-label="Practice with free online IELTS tests"
                   aria-label="Practice with free online IELTS tests"
                 >
                   Try Free Online Mock First
