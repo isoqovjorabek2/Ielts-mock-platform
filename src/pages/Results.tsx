@@ -187,7 +187,6 @@ export function Results() {
           <SEOLink 
             to="/exams" 
             className="btn-primary"
-            aria-label="Start another IELTS mock exam"
             title="Take another IELTS practice test"
           >
             Take Another Test

@@ -26,7 +26,6 @@ interface Price {
 }
 
 export function Booking() {
-  const { t } = useTranslation()
   const navigate = useNavigate()
   const { user } = useAuth()
   const [prices, setPrices] = useState<Price[]>([])

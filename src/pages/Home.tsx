@@ -171,7 +171,6 @@ export function Home() {
                       to="/dashboard" 
                       className="group border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2"
                       aria-label="View your progress dashboard"
-                      aria-label="View your progress dashboard"
                     >
                       <TrendingUp className="w-5 h-5" />
                       <span>View Progress</span>
@@ -191,7 +190,6 @@ export function Home() {
                     <Link 
                       to="/exams" 
                       className="group border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2"
-                      aria-label="Try demo IELTS practice test"
                       aria-label="Try demo IELTS practice test"
                     >
                       <Play className="w-5 h-5" />
@@ -455,7 +453,6 @@ export function Home() {
                   to="/booking" 
                   className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-300"
                   aria-label="Book local supervised IELTS exam"
-                  aria-label="Book local supervised IELTS exam"
                 >
                   Book Local Exam
                 </Link>
@@ -473,7 +470,6 @@ export function Home() {
                 <Link 
                   to="/exams" 
                   className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-300"
-                  aria-label="Try demo IELTS practice test"
                   aria-label="Try demo IELTS practice test"
                 >
                   Try Demo Test
