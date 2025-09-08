@@ -171,7 +171,7 @@ export function Dashboard() {
                     to="/exams" 
                     className="btn-primary"
                     aria-label="Take your first IELTS mock exam"
-                    aria-label="Take your first IELTS mock exam"
+                    title="Take your first IELTS mock exam"
                   >
                     Take Your First Test
                   </SEOLink>
@@ -249,7 +249,7 @@ export function Dashboard() {
                   className="block w-full btn-primary text-center"
                   aria-label="Start a new IELTS mock exam"
                   title="Take new IELTS practice test"
-                  aria-label="Start a new IELTS mock exam"
+                >
                   Take New Test
                 </SEOLink>
                 <SEOLink 
@@ -265,7 +265,7 @@ export function Dashboard() {
                     to="/booking" 
                     className="w-full btn-secondary text-center block"
                     aria-label="Upgrade your account for unlimited access"
-                    aria-label="Upgrade your account for unlimited access"
+                    title="Upgrade your account for unlimited access"
                   >
                     {t('upgradeAccount')}
                   </SEOLink>
