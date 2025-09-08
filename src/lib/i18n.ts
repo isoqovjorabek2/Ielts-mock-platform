@@ -69,7 +69,6 @@ const resources = {
       
       // Payment
       choosePlan: 'Choose Your Plan',
-      bookExam: 'Book Exam',
       freeTrialEnded: 'Your free trial has ended',
       upgradeToAccess: 'Upgrade to access unlimited mock exams',
       

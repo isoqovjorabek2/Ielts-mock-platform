@@ -1,4 +1,4 @@
-import { useLocation, Navigate, Link } from 'react-router-dom'
+import { useLocation, Navigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Trophy, Clock, Target, TrendingUp, Home } from 'lucide-react'
 import { Layout } from '../components/Layout/Layout'
@@ -187,7 +187,6 @@ export function Results() {
           <SEOLink 
             to="/exams" 
             className="btn-primary"
-            title="Take another IELTS practice test"
             aria-label="Start another IELTS mock exam"
             title="Take another IELTS practice test"
             aria-label="Start another IELTS mock exam"
@@ -197,7 +196,6 @@ export function Results() {
           <SEOLink 
             to="/dashboard" 
             className="btn-outline"
-            title="View your complete IELTS progress dashboard"
             aria-label="Go to your progress dashboard"
             title="View your complete IELTS progress dashboard"
             aria-label="Go to your progress dashboard"
@@ -207,7 +205,6 @@ export function Results() {
           <SEOLink 
             to="/" 
             className="btn-secondary flex items-center space-x-2"
-            title="Return to IELTS practice homepage"
             aria-label="Go back to homepage"
             title="Return to IELTS practice homepage"
             aria-label="Go back to homepage"

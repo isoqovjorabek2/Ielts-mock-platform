@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { BarChart3, Clock, Trophy, TrendingUp, BookOpen } from 'lucide-react'
 import { Layout } from '../components/Layout/Layout'
@@ -170,7 +170,6 @@ export function Dashboard() {
                   <SEOLink 
                     to="/exams" 
                     className="btn-primary"
-                    title="Start your first IELTS practice test"
                     aria-label="Take your first IELTS mock exam"
                     title="Start your first IELTS practice test"
                     aria-label="Take your first IELTS mock exam"
@@ -249,7 +248,6 @@ export function Dashboard() {
                 <SEOLink 
                   to="/exams" 
                   className="block w-full btn-primary text-center"
-                  title="Take new IELTS practice test"
                   aria-label="Start a new IELTS mock exam"
                   title="Take new IELTS practice test"
                   aria-label="Start a new IELTS mock exam"
@@ -259,7 +257,6 @@ export function Dashboard() {
                 <SEOLink 
                   to="/profile" 
                   className="block w-full btn-outline text-center"
-                  title="Edit your profile settings"
                   aria-label="Update your profile information"
                   title="Edit your profile settings"
                   aria-label="Update your profile information"
@@ -270,7 +267,6 @@ export function Dashboard() {
                   <SEOLink 
                     to="/booking" 
                     className="w-full btn-secondary text-center block"
-                    title="Upgrade to premium IELTS practice"
                     aria-label="Upgrade your account for unlimited access"
                     title="Upgrade to premium IELTS practice"
                     aria-label="Upgrade your account for unlimited access"
