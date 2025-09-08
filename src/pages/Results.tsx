@@ -189,7 +189,6 @@ export function Results() {
             className="btn-primary"
             aria-label="Start another IELTS mock exam"
             title="Take another IELTS practice test"
-            aria-label="Start another IELTS mock exam"
           >
             Take Another Test
           </SEOLink>
