@@ -254,7 +254,6 @@ export function Booking() {
                       title="Sign in to book IELTS supervised exam"
                       title="Sign in to book IELTS supervised exam"
                       aria-label="Sign in to your account to book exam"
-                    >
                       Sign In to Book
                     </SEOLink>
                     <p className="text-sm text-gray-600 text-center">
@@ -264,7 +263,6 @@ export function Booking() {
                         className="text-primary-600 hover:text-primary-500 font-medium"
                         title="Create free account for IELTS practice"
                         title="Create free account for IELTS practice"
-                        aria-label="Sign up for free IELTS practice account"
                       >
                         Sign up free
                       </SEOLink>
@@ -276,7 +274,6 @@ export function Booking() {
                   to="/exams" 
                   className="w-full btn-outline text-center block"
                   aria-label="Practice with free online IELTS tests"
-                  title="Try free online IELTS mock exam first"
                   aria-label="Practice with free online IELTS tests"
                 >
                   Try Free Online Mock First

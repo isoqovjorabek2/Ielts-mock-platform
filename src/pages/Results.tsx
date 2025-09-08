@@ -190,7 +190,6 @@ export function Results() {
             aria-label="Start another IELTS mock exam"
             title="Take another IELTS practice test"
             aria-label="Start another IELTS mock exam"
-          >
             Take Another Test
           </SEOLink>
           <SEOLink 
@@ -198,7 +197,6 @@ export function Results() {
             className="btn-outline"
             aria-label="Go to your progress dashboard"
             title="View your complete IELTS progress dashboard"
-            aria-label="Go to your progress dashboard"
           >
             View Dashboard
           </SEOLink>
@@ -206,7 +204,6 @@ export function Results() {
             to="/" 
             className="btn-secondary flex items-center space-x-2"
             aria-label="Go back to homepage"
-            title="Return to IELTS practice homepage"
             aria-label="Go back to homepage"
           >
             <Home className="w-4 h-4" />

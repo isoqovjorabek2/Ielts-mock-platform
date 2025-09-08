@@ -163,7 +163,6 @@ export function Home() {
                       className="group bg-white text-primary-600 hover:bg-gray-50 font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
                       aria-label="Continue practicing with mock exams"
                       title="Continue practicing with IELTS mock exams"
-                      aria-label="Continue practicing with mock exams"
                     >
                       <Play className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       <span>Continue Practice</span>
@@ -172,7 +171,6 @@ export function Home() {
                       to="/dashboard" 
                       className="group border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2"
                       aria-label="View your progress dashboard"
-                      title="View your IELTS practice progress and results"
                       aria-label="View your progress dashboard"
                     >
                       <TrendingUp className="w-5 h-5" />
@@ -186,7 +184,6 @@ export function Home() {
                       className="group bg-white text-primary-600 hover:bg-gray-50 font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
                       aria-label="Sign up for free IELTS practice"
                       title="Start your free IELTS practice trial"
-                      aria-label="Sign up for free IELTS practice"
                     >
                       <span>Start Free Trial</span>
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -195,7 +192,6 @@ export function Home() {
                       to="/exams" 
                       className="group border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2"
                       aria-label="Try demo IELTS practice test"
-                      title="Try IELTS mock exam demo"
                       aria-label="Try demo IELTS practice test"
                     >
                       <Play className="w-5 h-5" />
@@ -359,7 +355,6 @@ export function Home() {
                   <Link 
                     to={`/exam/${exam.name}`}
                     title={`Start ${t(exam.name)} IELTS practice test`}
-                    title={`Start ${t(exam.name)} IELTS practice test`}
                     aria-label={`Begin ${t(exam.name)} section practice`}
                     className="group/btn w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2"
                   >
@@ -375,7 +370,6 @@ export function Home() {
             <Link 
               to="/exams" 
               className="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
-              title="View all IELTS practice tests and mock exams"
               title="View all IELTS practice tests and mock exams"
               aria-label="Browse all available IELTS practice tests"
             >
@@ -454,7 +448,6 @@ export function Home() {
                   className="bg-white text-primary-600 hover:bg-gray-50 font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
                   aria-label="Continue practicing IELTS mock exams"
                   title="Continue with IELTS practice tests"
-                  aria-label="Continue practicing IELTS mock exams"
                 >
                   Continue Practice Tests
                 </Link>
@@ -462,7 +455,6 @@ export function Home() {
                   to="/booking" 
                   className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-300"
                   aria-label="Book local supervised IELTS exam"
-                  title="Book supervised IELTS mock exam locally"
                   aria-label="Book local supervised IELTS exam"
                 >
                   Book Local Exam
@@ -475,7 +467,6 @@ export function Home() {
                   className="bg-white text-primary-600 hover:bg-gray-50 font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
                   aria-label="Sign up for free IELTS practice account"
                   title="Start free IELTS practice trial"
-                  aria-label="Sign up for free IELTS practice account"
                 >
                   Start Free Trial
                 </Link>
@@ -483,7 +474,6 @@ export function Home() {
                   to="/exams" 
                   className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold py-4 px-8 rounded-xl transition-all duration-300"
                   aria-label="Try demo IELTS practice test"
-                  title="Try IELTS demo test without registration"
                   aria-label="Try demo IELTS practice test"
                 >
                   Try Demo Test
